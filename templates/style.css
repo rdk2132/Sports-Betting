@@ -1,0 +1,34 @@
+#header .title{
+    background-color: yellow;
+    padding: 45px 95px 30;
+    border: 5px solid darkgreen;
+    text-align: center;
+    
+}
+
+.menu {
+    width: 300px;
+    float: left;
+    padding: 0px 20px;
+    border: 5px solid darkgreen;
+    box-sizing: content-box;
+}
+
+
+.welcomemessage{
+    font-size: 15pt;
+    font-family: fantasy;
+}
+
+.title {
+    font-size: 24pt;
+    text-align: center;
+    text-emphasis: bold;
+}
+
+body{ 
+    font-size: 15pt;
+    justify-content: space-between;
+    font-family: didot;
+    background-color: greenyellow;
+}

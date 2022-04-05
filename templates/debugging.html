@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="style.css" rel="stylesheet">
+    <link href=
+  </head>
+  
+
+  <body>
+  <div id="header">
+    <div class="title">
+      <h1>Debugging</h1>
+    </div>
+  </div>
+  
+  <p><a href="index.html">Go to the other page</a></p>
+
+  <form method="POST" action="/add">
+    <p>Query: <input type="text" name="query"> <input type="submit" value="Add"></p>
+  </form>
+
+  </body>
+  <div>{{data}}</div>
+
+  <div>
+    {% for n in data %}
+    <div>{{n}}</div>
+    {% endfor %}
+  </div>
+
+</html>

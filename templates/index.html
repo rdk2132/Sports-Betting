@@ -1,29 +1,34 @@
+<!DOCTYPE html>
 <html>
-  <style>
-    body{ 
-      font-size: 15pt;
-      font-family: arial;
-    }
-  </style>
+  <head>
+    <link href="style.css" rel="stylesheet">
+  </head>
+  
 
-
-<body>
-  <h1>Some famous Computer Scientists</h1>
-  <div>{{data}}</div>
-
-  <div>
-    {% for n in data %}
-    <div>{{n}}</div>
-    {% endfor %}
-  </div>
-
-<p><a href="another">Go to the other page</a></p>
-
-<form method="POST" action="/add">
-<p>Name of new computer scientist: <input type="text" name="name"> <input type="submit" value="Add"></p>
-</form>
-
-</body>
+  <body>
+    <div id="header">
+      <div class="title">
+        <h1>Sports Betting</h1>
+      </div>
+    </div>
+    <p></p>
+    <element class="welcomemessage"> 
+      Welcome to Sports Betting! The place for you to get all information relevant to
+      sports betting so you can make the best possible bets and not lose all your money! - Judah and Ryan<br><br>
+      Below is a menu with some useful links to get around the site. <br>
+      To select which events you would like to see the odds for hit Get Event Odds below. <br>
+      For more information on this site click More Information. <br>
+      To get more information about the betting websites available click Betting Websites Information. <br>
+    </element>
+    <br><br>
+    <element class="menu">
+      <div class="title"> Quick Links </div>
+      <p><a href="debugging.html">Debugging</a></p>
+      <p><a href="get_event_odds.html">Get Event Odds</a></p>
+      <p><a href="betting_websites_info.html">Betting Websites Information</a></p>
+      <p><a href="about.html">More Information</a></p>
+    </element>
+  </body>
 
 
 </html>
