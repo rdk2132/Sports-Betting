@@ -19,9 +19,9 @@ from sqlalchemy import *
 from sqlalchemy.pool import NullPool
 from flask import Flask, request, render_template, g, redirect, Response
 
-
+static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
-app = Flask(__name__, template_folder=tmpl_dir)
+app = Flask(__name__, template_folder=tmpl_dir, static_folder=static_dir)
 
 
 #
@@ -97,6 +97,7 @@ def teardown_request(exception):
 #
 @app.route('/')
 def index():
+  render_template("index.html")
   """
   request is a special object that Flask provides to access web request information:
 
@@ -108,7 +109,7 @@ def index():
   """
 
   # DEBUG: this is debugging code to see what request looks like
-  print(request.args)
+  
 
 
   #
