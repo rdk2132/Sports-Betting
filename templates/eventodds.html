@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="{{ url_for('static', filename='style.css')}}" rel="stylesheet">
+    </head> 
+    <body>
+        <div id="header">
+            <div class="title">
+              <h1>Sports Betting</h1>
+            </div>
+        </div>
+        <br>
+        <form action="/eventodds" method="POST">
+            <label for="data">Choose a car:</label>
+            <select name="data" id="data">
+                <option value=""></option>
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <p>{{data}}</p>
+        <p><a href="/">Home page</a></p> 
+    </body>
+</html>

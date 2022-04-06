@@ -6,21 +6,28 @@
   <body>
     <div id="header">
       <div class="title">
-        <h1>Debugging</h1>
+        <h1>Sports Betting</h1>
       </div>
     </div>
     
     <p><a href="/">Home page</a></p>
 
-    <form method="POST" action="/add">
+    <form method="POST" action="/debugging">
       <p>Query: <input type="text" name="query"> <input type="submit" value="Add"></p>
     </form>
+    <table>
+      <tr>
+      {% for y in data%}
+        <th>DATA</th>
+      {% endfor %}
+      </tr>
+      {% for n in data %}
+      <tr>
+        {% for i in n %}
+            <td>{{i}}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
   </body>
-  <div>{{data}}</div>
-  <div>
-    {% for n in data %}
-    <div>{{n}}</div>
-    {% endfor %}
-  </div>
-
 </html>

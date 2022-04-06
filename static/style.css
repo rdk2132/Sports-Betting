@@ -35,3 +35,21 @@ body{
     font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: #FFEBD0;
 }
+
+table{
+    border: 1px solid black;
+    width: 60%;
+}
+
+th {
+    border: 1px solid black;
+    text-emphasis: bold;
+}
+
+td {
+    border: 1px solid black;
+}
+
+tr {
+    border: 1px solid black;
+}

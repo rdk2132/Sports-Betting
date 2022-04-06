@@ -167,18 +167,25 @@ def index():
 #
 @app.route("/eventodds/", methods=["POST", "GET"])
 def get_event_odds_render():
-  return render_template("geteventodds.html")
+  if request.method == "POST":
+    return render_template("eventodds.html", data=request.form['data'])
+  return render_template("eventodds.html")
 
 
 # Example of adding new data to the database
 @app.route('/debugging/', methods=["POST", "GET"])
 def debug():
+  if request.method == "POST":
+    #execute query
+    g = [[1,2,3,4,5], [1,2,3,4,5], [1,2,3,4,5], [1,2,3,4,5], [1,2,3,4,5]]
+    return render_template("debugging.html", **dict(data=g))
   return render_template("debugging.html")
 
 
 @app.route('/bettingwebsitesinfo/', methods=["POST", "GET"])
 def websites_info():
     return render_template("bettingwebsitesinfo.html")
+
 
 
 @app.route('/about/', methods=['GET'])
