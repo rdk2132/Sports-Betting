@@ -1,0 +1,37 @@
+#header .title{
+    background-color: #142E5E;
+    padding: 45px 95px 30;
+    border: 5px solid #186B79;
+    text-align: center;
+    color: #FCFCFC;
+}
+
+.menu {
+    margin: auto;
+    width: 40%;
+    padding: 10px;
+    border: 5px solid #186B79;
+    color: #186B79;
+}
+
+
+.welcomemessage{
+    font-size: 15pt;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.title {
+    font-size: 24pt;
+    color: #186B79;
+    text-align: center;
+    text-emphasis: bold;
+}
+
+
+body{ 
+    font-size: 15pt;
+    justify-content: space-between;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #FFEBD0;
+}

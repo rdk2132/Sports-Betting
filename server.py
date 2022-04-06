@@ -14,6 +14,7 @@ A debugger such as "pdb" may be helpful for debugging.
 Read about it online.
 """
 
+from crypt import methods
 import os
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
@@ -164,24 +165,25 @@ def index():
 # Notice that the function name is another() rather than index()
 # The functions for each app.route need to have different names
 #
-@app.route('/another')
-def another():
-  return render_template("another.html")
+@app.route("/eventodds/", methods=["POST", "GET"])
+def get_event_odds_render():
+  return render_template("geteventodds.html")
 
 
 # Example of adding new data to the database
-@app.route('/add', methods=['POST'])
-def add():
-  name = request.form['name']
-  g.conn.execute('INSERT INTO test VALUES (NULL, ?)', name)
-  return redirect('/')
+@app.route('/debugging/', methods=["POST", "GET"])
+def debug():
+  return render_template("debugging.html")
 
 
-@app.route('/login')
-def login():
-    abort(401)
-    this_is_never_executed()
+@app.route('/bettingwebsitesinfo/', methods=["POST", "GET"])
+def websites_info():
+    return render_template("bettingwebsitesinfo.html")
 
+
+@app.route('/about/', methods=['GET'])
+def about():
+  return render_template("about.html")
 
 if __name__ == "__main__":
   import click
