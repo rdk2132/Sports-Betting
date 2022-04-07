@@ -117,7 +117,7 @@ class Backend:
             result_list.append([r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7],r[8]])
         return result_list
        
-    def get_event_plsyers(self,event_id):
+    def get_event_players(self,event_id):
        
         query = "select first_name,last_name from player_participation join player on player_participation.player_id = player.player_id where event_id = '" + str(event_id) + "';"
         results = self.conn.execute(query)
