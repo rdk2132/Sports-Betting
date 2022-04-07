@@ -35,11 +35,11 @@ class Backend:
         return result_list
 
     def get_players(self):
-        query = 'select player_id, first_name, last_name from player;'
+        query = 'select first_name, last_name from player;'
         results = self.conn.execute(query)
         result_list = []
         for r in results:
-            result_list.append((r[0],r[1],r[2]))
+            result_list.append((r[0] + " " + r[1]))
         
         return result_list
     

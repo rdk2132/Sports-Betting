@@ -18,7 +18,9 @@
     <table>
       <tr>
       {% for y in data%}
-        <th>DATA</th>
+        {% for x in y %}
+          <th>DATA</th>
+        {% endfor %}
       {% endfor %}
       </tr>
       {% for n in data %}

@@ -15,7 +15,9 @@ Read about it online.
 """
 
 from crypt import methods
+import json
 import os
+
 
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
@@ -100,16 +102,18 @@ def index():
 def get_event_odds_render():
   if request.method == "POST":
     return render_template("eventodds.html", data=request.form['data'])
-  return render_template("eventodds.html")
+  return render_template("eventodds.html", teams=backend.get_team_names(),
+    leagues=backend.get_league_names(), players=backend.get_players(), 
+    events=backend.get_events(None, None, None, None, None))
 
 
 @app.route('/debugging/', methods=["POST", "GET"])
 def debug():
   if request.method == "POST":
     #execute query
-    h = backend.get_team_names()
-    print(h)
-    return render_template("debugging.html", **dict(data=h))
+    result = backend.query(request.form['query'])
+    print(result)
+    return render_template("debugging.html", data=result)
   return render_template("debugging.html")
 
 
