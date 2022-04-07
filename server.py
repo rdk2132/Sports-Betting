@@ -101,7 +101,21 @@ def index():
 @app.route("/eventodds/", methods=["POST", "GET"])
 def get_event_odds_render():
   if request.method == "POST":
-    return render_template("eventodds.html", data=request.form['data'])
+    print("HERE")
+    #date = request.form['date']
+    team = request.form['team']
+    player = request.form['player'].split(" ")
+    if len(player) > 1:
+      first = player[0]
+      last = player[1]
+    else:
+      first = None
+      last = None
+    league = request.form['league']
+    print(None, team, first, last, league)
+    return render_template("eventodds.html", teams=backend.get_team_names(),
+      leagues=backend.get_league_names(), players=backend.get_players(), 
+      events=backend.get_events(None, team, first, last, league))
   return render_template("eventodds.html", teams=backend.get_team_names(),
     leagues=backend.get_league_names(), players=backend.get_players(), 
     events=backend.get_events(None, None, None, None, None))

@@ -67,7 +67,7 @@ class Backend:
             results = self.conn.execute(query)
             result_list = []
             for r in results:
-                result_list.append((r[0],r[1],r[2]))
+                result_list.append([r[0],r[1],r[2]])
             
             return result_list
         else:
@@ -87,7 +87,7 @@ class Backend:
             results = self.conn.execute(query)
             result_list = []
             for r in results:
-                result_list.append((r[0],r[1],r[2]))
+                result_list.append([r[0],r[1],r[2]])
             
             return result_list            
         

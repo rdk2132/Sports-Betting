@@ -13,29 +13,43 @@
         <form action="/eventodds" method="POST">
             <label for="team">Team:</label>
             <select name="team" id="team">
-                <option value=""></option>
+                <option value=None></option>
                 {% for i in teams %}
                 <option value="{{i}}">{{i}}</option>
                 {% endfor %}
             </select>
             <label for="league">Leagues:</label>
             <select name="league" id="league">
-                <option value=""></option>
+                <option value=None></option>
                 {% for i in leagues %}
                 <option value="{{i}}">{{i}}</option>
                 {% endfor %}
             </select>
             <label for="league">Players:</label>
             <select name="player" id="player">
-                <option value=""></option>
+                <option value=None></option>
                 {% for i in players %}
                 <option value="{{i}}">{{i}}</option>
                 {% endfor %}
             </select>
-            <br><br>
+            
             <input type="submit" value="Submit">
         </form>
-        <p>{{events}}</p>
+        <br>
+        <table>
+            <tr>
+                <th>Event ID</th>
+                <th>Name</th>
+                <th>Date</th>
+            </tr>
+            {% for n in events %}
+            <tr>
+                {%for y in n%}
+                    <td>{{y}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
         <p><a href="/">Home page</a></p> 
     </body>
 </html>
