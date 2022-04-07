@@ -14,16 +14,11 @@ A debugger such as "pdb" may be helpful for debugging.
 Read about it online.
 """
 
-import ast
 from crypt import methods
-import json
 import os
-
-
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
 from flask import Flask, request, render_template, g, redirect, Response
-
 from backend import Backend
 
 static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
