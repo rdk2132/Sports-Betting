@@ -16,9 +16,12 @@ Read about it online.
 
 from crypt import methods
 import os
+
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
 from flask import Flask, request, render_template, g, redirect, Response
+
+from backend import Backend
 
 static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
@@ -172,12 +175,11 @@ def get_event_odds_render():
   return render_template("eventodds.html")
 
 
-# Example of adding new data to the database
 @app.route('/debugging/', methods=["POST", "GET"])
 def debug():
   if request.method == "POST":
     #execute query
-    g = [[1,2,3,4,5], [1,2,3,4,5], [1,2,3,4,5], [1,2,3,4,5], [1,2,3,4,5]]
+    g = Backend.get_team_names()
     return render_template("debugging.html", **dict(data=g))
   return render_template("debugging.html")
 

@@ -1,11 +1,10 @@
 from sqlalchemy import * 
 
-
 class Backend:
     def __init__(self, user, password):
-        self.user = user
-        self.password = password
-        self.engine = create_engine('postgresql://'+self.user+':'+self.password+'@localhost:5432/db1')
+        self.user = "rdk2132"
+        self.password = "password"
+        self.engine = create_engine("postgresql://rdk2132:password@35.211.155.104/proj1part2")
         self.conn = self.engine.connect()
 
     def get_team_names(self):
