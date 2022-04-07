@@ -1,9 +1,7 @@
 from sqlalchemy import * 
 
 class Backend:
-    def __init__(self, user, password):
-        self.user = "rdk2132"
-        self.password = "password"
+    def __init__(self):
         self.engine = create_engine("postgresql://rdk2132:password@35.211.155.104/proj1part2")
         self.conn = self.engine.connect()
 
@@ -51,10 +49,3 @@ class Backend:
     #        where += " event_date = " + date + " and "
               
         
-    
-backend = Backend('postgres','pass')        
-
-names = backend.get_players()
-
-for n in names:
-    print(n)
