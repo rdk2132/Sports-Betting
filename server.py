@@ -14,6 +14,7 @@ A debugger such as "pdb" may be helpful for debugging.
 Read about it online.
 """
 
+import ast
 from crypt import methods
 import json
 import os
@@ -101,18 +102,23 @@ def index():
 @app.route("/eventodds/", methods=["POST", "GET"])
 def get_event_odds_render():
   if request.method == "POST":
-    print("HERE")
     #date = request.form['date']
     team = request.form['team']
-    player = request.form['player'].split(" ")
-    if len(player) > 1:
-      first = player[0]
-      last = player[1]
-    else:
+    if team == "None":
+      team = None
+    player = request.form['player']
+    if player == "None":
+      player = None
+    if player == None:
       first = None
       last = None
+    else:
+      player.split(" ")
+      first = player[0]
+      last = player[1]
     league = request.form['league']
-    print(None, team, first, last, league)
+    if league == "None":
+      league = None
     return render_template("eventodds.html", teams=backend.get_team_names(),
       leagues=backend.get_league_names(), players=backend.get_players(), 
       events=backend.get_events(None, team, first, last, league))
