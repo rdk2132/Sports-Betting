@@ -153,10 +153,10 @@ class Backend:
         
         return result_list  
         
-b = Backend()
-r=b.get_event_odds(1000001)
+#b = Backend()
+#r=b.get_event_odds(1000001)
 #r = b.get_events('2022-02-04',"Mets","Jacob","DeGrom","MLB")
-for i in r:
-    print(i)
+#for i in r:
+#    print(i)
     
     
