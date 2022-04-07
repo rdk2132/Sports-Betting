@@ -115,16 +115,17 @@ class Backend:
         result_list = []
         for r in results:
             result_list.append([r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7],r[8]])
-        event_info = result_list
-        
+        return result_list
+       
+    def get_event_plsyers(self,event_id):
+       
         query = "select first_name,last_name from player_participation join player on player_participation.player_id = player.player_id where event_id = '" + str(event_id) + "';"
         results = self.conn.execute(query)
         result_list = []
         for r in results:
             result_list.append(r[0] + " " + r[1])
-        players = result_list
+        return result_list
             
-        return event_info, players 
 
     def get_league_info(self,league_name):
         query = "select * from league where league_name = '"+league_name+"';"
