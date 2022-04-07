@@ -47,7 +47,10 @@ class Backend:
         results =  self.conn.execute(q)
         result_list = []
         for r in results:
-            result_list.append(r)
+            inner_list = []
+            for i in r:
+                inner_list.append(i)
+            result_list.append(inner_list)
         return result_list 
         
     #def get_events(self,date,team,player,league,oddsmakers):
