@@ -90,12 +90,73 @@ class Backend:
                 result_list.append([r[0],r[1],r[2]])
             
             return result_list            
-        
-        
-#b = Backend()
-#r = b.get_events('2022-02-04',"Mets","Jacob","DeGrom","MLB")
-#for i in r:
-#    print(i)
     
+    def get_team_info(self,team_name):         
+        query = "select team_name, location, current_season, current_season_win_record, current_season_loss_record, coach from team where team_name ='"+team_name+"';"
+        results = self.conn.execute(query)
+        result_list = []
+        for r in results:
+            result_list.append([r[0],r[1],r[2],r[3],r[4],r[5]])
+        
+        return result_list
+    
+    def get_player_info(self,first_name,last_name):
+        query = "select first_name, last_name, position, age, salary, gender, dob from player where first_name = '"+first_name+"' and last_name = '"+last_name+"';"
+        results = self.conn.execute(query)
+        result_list = []
+        for r in results:
+            result_list.append([r[0],r[1],r[2],r[3],r[4],r[5],r[6]])
+        
+        return result_list        
+
+    def get_event_info(self,event_id):
+        query = "select * from sporting_event where event_id = '"+str(event_id)+"';"
+        results = self.conn.execute(query)
+        result_list = []
+        for r in results:
+            result_list.append([r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7],r[8]])
+        event_info = result_list
+        
+        query = "select first_name,last_name from player_participation join player on player_participation.player_id = player.player_id where event_id = '" + str(event_id) + "';"
+        results = self.conn.execute(query)
+        result_list = []
+        for r in results:
+            result_list.append(r[0] + " " + r[1])
+        players = result_list
+            
+        return event_info, players 
+
+    def get_league_info(self,league_name):
+        query = "select * from league where league_name = '"+league_name+"';"
+        results = self.conn.execute(query)
+        result_list = []
+        for r in results:
+            result_list.append([r[0],r[1],r[2],r[3],r[4]])
+        
+        return result_list  
+
+    def get_odds_from_url(self, url):
+        query = "select bet_id,odds_team_1_wins,event_id from betting_odds where url = '"+url+"';"
+        results = self.conn.execute(query)
+        result_list = []
+        for r in results:
+            result_list.append([r[0],r[1],r[2]])
+        
+        return result_list          
+    
+    def get_event_odds(self,event_id):
+        query = "select bet_id,odds_team_1_wins,event_id, betting_odds.url, name,year_founded,betting_volume_per_month from betting_odds join betting_website on betting_odds.url = betting_website.url where event_id = '"+str(event_id)+"';"
+        results = self.conn.execute(query)
+        result_list = []
+        for r in results:
+            result_list.append([r[0],r[1],r[2],r[3],r[4],r[5],r[6]])
+        
+        return result_list  
+        
+b = Backend()
+r=b.get_event_odds(1000001)
+#r = b.get_events('2022-02-04',"Mets","Jacob","DeGrom","MLB")
+for i in r:
+    print(i)
     
     
