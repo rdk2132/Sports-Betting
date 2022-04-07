@@ -96,7 +96,7 @@ class Backend:
         results = self.conn.execute(query)
         result_list = []
         for r in results:
-            result_list.append([r[0],r[1],r[2],r[3],r[4],r[5]])
+            result_list.append([r[0],r[1],r[2],r[3],r[4],r[5],"BLURB"])
         
         return result_list
     
@@ -105,7 +105,7 @@ class Backend:
         results = self.conn.execute(query)
         result_list = []
         for r in results:
-            result_list.append([r[0],r[1],r[2],r[3],r[4],r[5],r[6]])
+            result_list.append([r[0],r[1],r[2],r[3],r[4],r[5],r[6],"BLURB"])
         
         return result_list        
 
@@ -132,7 +132,7 @@ class Backend:
         results = self.conn.execute(query)
         result_list = []
         for r in results:
-            result_list.append([r[0],r[1],r[2],r[3],r[4]])
+            result_list.append([r[0],r[1],r[2],r[3],r[4],"BLURB"])
         
         return result_list  
 
