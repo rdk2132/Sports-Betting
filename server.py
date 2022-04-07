@@ -97,7 +97,9 @@ def index():
 @app.route("/eventodds/", methods=["POST", "GET"])
 def get_event_odds_render():
   if request.method == "POST":
-    #date = request.form['date']
+    date = request.form['date']
+    if len(date) == 0:
+      date = None
     team = request.form['team']
     if team == "None":
       team = None
@@ -116,7 +118,7 @@ def get_event_odds_render():
       league = None
     return render_template("eventodds.html", teams=backend.get_team_names(),
       leagues=backend.get_league_names(), players=backend.get_players(), 
-      events=backend.get_events(None, team, first, last, league))
+      events=backend.get_events(date, team, first, last, league))
   return render_template("eventodds.html", teams=backend.get_team_names(),
     leagues=backend.get_league_names(), players=backend.get_players(), 
     events=backend.get_events(None, None, None, None, None))
@@ -127,7 +129,6 @@ def debug():
   if request.method == "POST":
     #execute query
     result = backend.query(request.form['query'])
-    print(result)
     return render_template("debugging.html", data=result)
   return render_template("debugging.html")
 
@@ -135,6 +136,32 @@ def debug():
 @app.route('/bettingwebsitesinfo/', methods=["POST", "GET"])
 def websites_info():
     return render_template("bettingwebsitesinfo.html")
+
+@app.route('/event/', methods=['GET'])
+def event():
+  data = request.args.get('data')
+  data = int(data)
+  return render_template("event.html", info=backend.get_event_info(data),
+   odds=backend.get_event_odds(data), players=backend.get_event_players(data))
+
+
+@app.route('/team/', methods=['GET'])
+def team():
+  data = request.args.get('data')
+  data.strip()
+  return render_template("team.html", info=backend.get_team_info(data))
+
+@app.route('/player/', methods=['GET'])
+def player():
+  data = request.args.get('data')
+  first = data[0:50].strip()
+  last = data[50:].strip()
+  return render_template("player.html", info=backend.get_player_info(first, last))
+
+@app.route('/league/', methods=['GET'])
+def league():
+  data = request.args.get('data')
+  return render_template("league.html", info=backend.get_league_info(data))
 
 
 

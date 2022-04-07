@@ -32,7 +32,8 @@
                 <option value="{{i}}">{{i}}</option>
                 {% endfor %}
             </select>
-            
+            <label for="Date">Date:</label>
+            <input type="date" id="date" name="date">
             <input type="submit" value="Submit">
         </form>
         <br>
@@ -44,9 +45,8 @@
             </tr>
             {% for n in events %}
             <tr>
-                {%for y in n%}
-                    <td>{{y}}</td>
-                {% endfor %}
+                <td><a href="/event?data={{n[0]}}">{{n[1]}}</a></td>
+                <td>{{n[2]}}</td>
             </tr>
             {% endfor %}
         </table>

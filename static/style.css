@@ -24,8 +24,16 @@
 .title {
     font-size: 24pt;
     color: #186B79;
+    margin: auto;
     text-align: center;
     text-emphasis: bold;
+}
+
+.info {
+    font-size: 24pt;
+    text-align: center;
+    text-emphasis: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 
@@ -48,6 +56,7 @@ th {
 }
 
 td {
+    text-align: center;
     border: 1px solid black;
 }
 
