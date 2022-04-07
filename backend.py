@@ -44,7 +44,11 @@ class Backend:
         return result_list
     
     def query(self,q):
-        return self.conn.execute(q)
+        results =  self.conn.execute(q)
+        result_list = []
+        for r in results:
+            result_list.append(r)
+        return result_list 
         
     #def get_events(self,date,team,player,league,oddsmakers):
     #    where = ""
