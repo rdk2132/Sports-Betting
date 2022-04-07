@@ -149,7 +149,7 @@ class Backend:
         results = self.conn.execute(query)
         result_list = []
         for r in results:
-            result_list.append([r[0],r[1],r[2],r[3],r[4],r[5],r[6]])
+            result_list.append([r[0],r[1],100-r[1],r[2],r[3],r[4],r[5],r[6]])
         
         return result_list  
         
