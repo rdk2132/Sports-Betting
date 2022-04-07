@@ -2,6 +2,8 @@ from sqlalchemy import *
 
 class Backend:
     def __init__(self):
+        #self.engine = create_engine('postgresql://'+"postgres"+':'+'pass'+'@localhost:5432/db1')
+
         self.engine = create_engine("postgresql://rdk2132:password@35.211.155.104/proj1part2")
         self.conn = self.engine.connect()
 
@@ -41,6 +43,9 @@ class Backend:
         
         return result_list
     
+    def query(self,q):
+        return self.conn.execute(q)
+        
     #def get_events(self,date,team,player,league,oddsmakers):
     #    where = ""
     #    if date is not None:
