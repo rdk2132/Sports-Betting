@@ -15,6 +15,7 @@ Read about it online.
 """
 
 from crypt import methods
+import pandas as pd
 import os
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
@@ -25,6 +26,10 @@ static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 app = Flask(__name__, template_folder=tmpl_dir, static_folder=static_dir)
 backend = Backend()
+with open('teams.csv', encoding='utf-8', errors='ignore') as fd:
+  logos_db = pd.read_csv(fd, quotechar='"')
+print(logos_db)
+
 
 #
 # The following is a dummy URI that does not connect to a valid database. You will need to modify it to connect to your Part 2 database in order to use the data.
@@ -149,7 +154,12 @@ def event():
 def team():
   data = request.args.get('data')
   data.strip()
-  return render_template("team.html", info=backend.get_team_info(data))
+  team_info = backend.get_team_info(data)
+  match = logos_db.where(logos_db['Team Name'] == 'New York Mets')
+  find = match.first_valid_index()
+  location = logos_db.iloc[[find]]
+  api_location = int(location['Team API Id'])
+  return render_template("team.html", info=team_info, api_id=api_location, team_name="New York Mets")
 
 @app.route('/player/', methods=['GET'])
 def player():
