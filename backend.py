@@ -1,5 +1,5 @@
 from sqlalchemy import * 
-
+import statistics
 class Backend:
     def __init__(self):
         #self.engine = create_engine('postgresql://'+"postgres"+':'+'pass'+'@localhost:5432/test')
@@ -153,8 +153,39 @@ class Backend:
             result_list.append([r[0],r[1],100-r[1],r[2],r[3],r[4],r[5],r[6]])
         
         return result_list  
+    
+    def get_historical_accuracy(self,event_ids, url):
+        winner_dict = {}
+        
+        for event_id in event_ids:
+            event_info = self.get_event_info(event_id)[0]
+            winner = event_info[5]
+            team_1 = event_info[6]
+            game_result = 0
+            if winner== team_1:
+                game_result = 1
+            winner_dict[event_id] = game_result
+        
+        results = self.get_odds_from_url(url)
+        errors = []
+        for line in results:
+            event_id = line[2]
+            odds_team_1_wins = line[1]
+            if event_id in winner_dict:
+                error = abs(winner_dict[event_id] - odds_team_1_wins)
+                errors.append(error)
+        if len(errors) == 0:
+            return 0
+        return statistics.mean(errors)
+        
         
 #b = Backend()
+#r = b.get_historical_accuracy([1000001,1000002],'https://fivethirtyeight.com/')
+#print(r)
+#r = b.get_historical_accuracy([1000003,1000004],'https://fivethirtyeight.com/')
+#print(r)
+#r = b.get_historical_accuracy([1000003,1000005],'https://sportsbook.draftkings.com/sportsbook')
+#print(r)
 #r=b.get_event_odds(1000001)
 #r = b.get_events('2022-02-04',"Mets","Jacob","DeGrom","MLB")
 #for i in r:
