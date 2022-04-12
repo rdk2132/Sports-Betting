@@ -143,7 +143,8 @@ def historical_accuracy_view():
     new = events[1:len(events)-1].split(",")
     for i in range(len(new)):
       new[i] = int(new[i])
-  new = []
+  else: 
+    new = []
   return render_template("historicalaccuracy.html", events=backend.get_historical_accuracy_all_urls(new))
 
 @app.route('/debugging/', methods=["POST", "GET"])
