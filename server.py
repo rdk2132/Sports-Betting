@@ -139,7 +139,7 @@ def get_event_odds_render():
 @app.route('/historicalaccuracy/', methods=['GET', 'POST'])
 def historical_accuracy_view():
   events = request.args.get("data")
-  if events != "[[]]":
+  if events != "[]":
     new = events[1:len(events)-1].split(",")
     for i in range(len(new)):
       new[i] = int(new[i])
