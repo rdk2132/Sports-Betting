@@ -179,6 +179,8 @@ class Backend:
         return statistics.mean(errors)
         
     def get_historical_accuracy_all_urls(self,event_ids):
+        if len(event_ids) == 0:
+            return [["No Events Found", 0]]
         odds_makers = self.get_odds_makers()
         url_list = []
         names = []
