@@ -1,9 +1,41 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="style.css" rel="stylesheet">
-    </head>    
+        <link href="{{ url_for('static', filename='style.css')}}" rel="stylesheet">
+    </head>  
     <body>
-        LEAGUE INFO
+        <div id="header">
+            <div class="title">
+              <h1>Sports Betting</h1>
+            </div>
+        </div>
+        <br>
+        <element class="title">League Info</element>
+        <br>
+        <br>
+        <element class="welcomemessage">Team Name: {{info[0][0]}} </element>
+        <br>
+        <br>
+        <element class="welcomemessage">Country: {{info[0][1]}}</element>
+        <br>
+        <br>
+        <element class="welcomemessage">Commisioner: {{info[0][2]}} </element>
+        <br>
+        <br>
+        <element class="welcomemessage">Current Season Start Date: {{info[0][3]}}</element>
+        <br>
+        <br>
+        <element class="welcomemessage">Current Season End Date: {{info[0][4]}}</element>
+        <br>
+        <br>
+        <element class="welcomemessage">Description: {{info[0][5]}} </element>
+        <br>
+        <br>
+        <div class="menu">
+            <div class="title"> Quick Links </div>
+            <p><a href="/">Home</a></p>
+            <p><a href="/debugging">Debugging</a></p>
+            <p><a href="/eventodds">Get Event Odds</a></p>
+        </div>
     </body>
 </html>

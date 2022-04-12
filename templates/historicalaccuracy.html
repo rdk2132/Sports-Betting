@@ -10,7 +10,20 @@
             </div>
         </div>
         <br>
-            
+        <div class="title">Historical Accuracy by Oddsmaker in MAE</div>
+        <br>
+        <table>
+            <tr>
+                <th>Oddsmaker</th>
+                <th>MAE</th>
+            </tr>
+            {% for n in events %}
+            <tr>
+                <td>{{n[0]}}</td>
+                <td>{{n[1]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
         <br>
         <div class="menu">
             <div class="title"> Quick Links </div>

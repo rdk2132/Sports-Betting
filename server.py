@@ -26,9 +26,6 @@ static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 app = Flask(__name__, template_folder=tmpl_dir, static_folder=static_dir)
 backend = Backend()
-with open('teams.csv', encoding='utf-8', errors='ignore') as fd:
-  logos_db = pd.read_csv(fd, quotechar='"')
-print(logos_db)
 
 
 #
@@ -115,19 +112,37 @@ def get_event_odds_render():
       first = None
       last = None
     else:
-      player.split(" ")
+      player.strip()
+      player = player.split()
       first = player[0]
       last = player[1]
     league = request.form['league']
     if league == "None":
       league = None
+    
+    events_list = backend.get_events(date, team, first, last, league)
+    ids = []
+    for i in events_list:
+      ids.append(i[0])
     return render_template("eventodds.html", teams=backend.get_team_names(),
       leagues=backend.get_league_names(), players=backend.get_players(), 
-      events=backend.get_events(date, team, first, last, league))
+      events=events_list, ids=ids)
+  
+  events_list = backend.get_events(None, None, None, None, None)
+  ids = []
+  for i in events_list:
+    ids.append(i[0])
   return render_template("eventodds.html", teams=backend.get_team_names(),
     leagues=backend.get_league_names(), players=backend.get_players(), 
-    events=backend.get_events(None, None, None, None, None))
+    events=events_list, ids=ids)
 
+@app.route('/historicalaccuracy/', methods=['GET', 'POST'])
+def historical_accuracy_view():
+  events = request.args.get("data")
+  new = events[1:len(events)-1].split(",")
+  for i in range(len(new)):
+    new[i] = int(new[i])
+  return render_template("historicalaccuracy.html", events=backend.get_historical_accuracy_all_urls(new))
 
 @app.route('/debugging/', methods=["POST", "GET"])
 def debug():
@@ -155,11 +170,7 @@ def team():
   data = request.args.get('data')
   data.strip()
   team_info = backend.get_team_info(data)
-  match = logos_db.where(logos_db['Team Name'] == 'New York Mets')
-  find = match.first_valid_index()
-  location = logos_db.iloc[[find]]
-  api_location = int(location['Team API Id'])
-  return render_template("team.html", info=team_info, api_id=api_location, team_name="New York Mets")
+  return render_template("team.html", info=team_info)
 
 @app.route('/player/', methods=['GET'])
 def player():
@@ -171,9 +182,8 @@ def player():
 @app.route('/league/', methods=['GET'])
 def league():
   data = request.args.get('data')
+  data.strip()
   return render_template("league.html", info=backend.get_league_info(data))
-
-
 
 @app.route('/about/', methods=['GET'])
 def about():
