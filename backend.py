@@ -180,7 +180,7 @@ class Backend:
         
     def get_historical_accuracy_all_urls(self,event_ids):
         if len(event_ids) == 0:
-            return [["No Events Found", 0]]
+            return [[]]
         odds_makers = self.get_odds_makers()
         url_list = []
         names = []
