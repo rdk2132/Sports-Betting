@@ -92,20 +92,20 @@ class Backend:
             return result_list            
     
     def get_team_info(self,team_name):         
-        query = "select team_name, location, current_season, current_season_win_record, current_season_loss_record, coach from team where team_name ='"+team_name+"';"
+        query = "select team_name, location, current_season, current_season_win_record, current_season_loss_record, coach, blurb from team where team_name ='"+team_name+"';"
         results = self.conn.execute(query)
         result_list = []
         for r in results:
-            result_list.append([r[0],r[1],r[2],r[3],r[4],r[5],"BLURB"])
+            result_list.append([r[0],r[1],r[2],r[3],r[4],r[5],r[6]])
         
         return result_list
     
     def get_player_info(self,first_name,last_name):
-        query = "select first_name, last_name, position, age, salary, gender, dob from player where first_name = '"+first_name+"' and last_name = '"+last_name+"';"
+        query = "select first_name, last_name, position, age, salary, gender, dob, blurb from player where first_name = '"+first_name+"' and last_name = '"+last_name+"';"
         results = self.conn.execute(query)
         result_list = []
         for r in results:
-            result_list.append([r[0],r[1],r[2],r[3],r[4],r[5],r[6],"BLURB"])
+            result_list.append([r[0],r[1],r[2],r[3],r[4],r[5],r[6], r[7]])
         
         return result_list        
 
@@ -132,7 +132,7 @@ class Backend:
         results = self.conn.execute(query)
         result_list = []
         for r in results:
-            result_list.append([r[0],r[1],r[2],r[3],r[4],"BLURB"])
+            result_list.append([r[0],r[1],r[2],r[3],r[4],r[5]])
         
         return result_list  
 
