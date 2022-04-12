@@ -145,8 +145,13 @@ INSERT INTO team (team_name, location, current_season, current_season_win_record
 	('Phillies', 'Philadelphia', '2022', 0, 0, 'Joe Girardi', 'The Philadelphia Phillies are an American professional baseball team based in Philadelphia. They compete in Major League Baseball (MLB) as a member of the National League (NL) East division. Since 2004, the team''s home stadium has been Citizens Bank Park, located in South Philadelphia. The Phillies are the oldest continuous same-name, same-city franchise in American professional sports'),
 	('Marlins', 'Miami', '2022', 0, 0, 'Don Mattingly', 'The Miami Marlins are an American professional baseball team based in Miami. The Marlins compete in Major League Baseball (MLB) as a member club of the National League (NL) East division. Their home park is LoanDepot Park.'),
 	('Nationals', 'Washington', '2022', 0, 0, 'Dave Martinez', 'The Washington Nationals are an American professional baseball team based in Washington, D.C. The Nationals compete in Major League Baseball (MLB) as a member club of the National League (NL) East division. From 2005 to 2007, the team played in RFK Stadium while a new stadium was being built. In 2008, they moved in to Nationals Park, located on South Capitol Street in the Southeast quadrant of D.C., near the Anacostia River.'),
-	('Dodgers', 'Los Angeles', '2022', 0, 0, 'Dave Roberts', 'The Los Angeles Dodgers are an American professional baseball team based in Los Angeles. The Dodgers compete in Major League Baseball (MLB) as a member club of the National League (NL) West division. Established in 1883 in the city of Brooklyn, which later became a borough of New York City, the team joined the NL in 1890 as the Brooklyn Bridegrooms and assumed several different monikers thereafter before finally settling on the name Dodgers in 1932.['),
-	('Red Sox', 'Boston', '2022', 0, 0, 'Alex Cora', 'The Boston Red Sox are an American professional baseball team based in Boston. The Red Sox compete in Major League Baseball (MLB) as a member club of the American League (AL) East division. Founded in 1901 as one of the American League''s eight charter franchises, the Red Sox'' home ballpark has been Fenway Park since 1912. ');
+	('Dodgers', 'Los Angeles', '2022', 0, 0, 'Dave Roberts', 'The Los Angeles Dodgers are an American professional baseball team based in Los Angeles. The Dodgers compete in Major League Baseball (MLB) as a member club of the National League (NL) West division. Established in 1883 in the city of Brooklyn, which later became a borough of New York City, the team joined the NL in 1890 as the Brooklyn Bridegrooms and assumed several different monikers thereafter before finally settling on the name Dodgers in 1932.['),	
+    ('Knicks', 'New York City', '2022', 3, 5, 'Alex Berg','The New York Knickerbockers,[3][7] shortened and more commonly referred to as the New York Knicks, are an American professional basketball team based in the New York City borough of Manhattan. The Knicks compete in the National Basketball Association (NBA) as a member of the Atlantic Division of the Eastern Conference. '),
+    ('Nets', 'New York City', '2022', 0, 5, 'Jason Kosack','The Brooklyn Nets are an American professional basketball team based in the New York City borough of Brooklyn. The Nets compete in the National Basketball Association (NBA) as a member of the Atlantic Division of the Eastern Conference. The team plays its home games at Barclays Center. They are one of two NBA teams located in New York City; the other is the New York Knicks.'),
+    ('Warriors', 'San Francisco', '2022', 3, 5, 'Darnell Gentles','The Golden State Warriors are an American professional basketball team based in San Francisco. The Warriors compete in the National Basketball Association (NBA), as a member of the league''s Western Conference Pacific Division. Founded in 1946 in Philadelphia, the Warriors moved to the San Francisco Bay Area in 1962 and took the city''s name, before changing its geographic moniker to Golden State in 1971.'),
+    ('Hawks', 'Atlanta', '2022', 2, 6, 'Anton Jackson','The Atlanta Hawks are an American professional basketball team based in Atlanta. The Hawks compete in the National Basketball Association (NBA) as a member of the league''s Eastern Conference Southeast Division. The team plays its home games at State Farm Arena.'),
+    ('Mavericks', 'Dallas', '2022', 7, 0, 'Alex Berg','The Dallas Mavericks (often referred to as the Mavs) are an American professional basketball team based in Dallas. The Mavericks compete in the National Basketball Association (NBA) as a member of the Western Conference Southwest Division. The team plays its home games at the American Airlines Center, which it shares with the National Hockey League''s Dallas Stars.'),
+    ('Red Sox', 'Boston', '2022', 0, 0, 'Alex Cora', 'The Boston Red Sox are an American professional baseball team based in Boston. The Red Sox compete in Major League Baseball (MLB) as a member club of the American League (AL) East division. Founded in 1901 as one of the American League''s eight charter franchises, the Red Sox'' home ballpark has been Fenway Park since 1912. ');
 
 INSERT INTO betting_website (url,name,year_founded,betting_volume_per_month) VALUES
 	('https://fivethirtyeight.com/','FiveThirtyEight','2006', 500000),
@@ -172,7 +177,11 @@ INSERT INTO sporting_event (event_id, event_name, event_date, event_type, locati
 	(1000011, 'Yankees Vs. Braves', '2022-08-12', 'baseball', 'Atlanta, GA', 'Yankees', 'MLB','Yankees','Braves'),
 	(1000012, 'Yankees Vs. Red Sox', '2022-08-12', 'baseball', 'Boston, MA', 'Yankees', 'MLB','Yankees','Red Sox'),
 	(1000013, 'Braves Vs. Cubs', '2022-09-18', 'baseball', 'Chicago, IL', 'Yankees', 'MLB','Braves','Cubs'),
-	(1000014, 'Cubs Vs. Red Sox', '2022-09-04', 'baseball', 'Boston, MA', 'Red Sox', 'MLB','Cubs','Red Sox');
+	(1000014, 'Cubs Vs. Red Sox', '2022-09-04', 'baseball', 'Boston, MA', 'Red Sox', 'MLB','Cubs','Red Sox'),
+	(1000015, 'Warriors Vs. Hawks', '2022-09-06', 'basketball', 'San Francisco, CA', 'Hawks', 'NBA','Warriors','Hawks'),
+	(1000016, 'Knicks Vs. Hawks', '2022-09-14', 'basketball', 'NYC, NY', 'Hawks', 'NBA','Knicks','Hawks'),
+	(1000017, 'Knicks Vs. Nets', '2022-09-07', 'basketball', 'NYC, NY', 'Knicks', 'NBA','Knicks','Nets'),
+	(1000018, 'Warriors Vs. Nets', '2022-09-24', 'basketball', 'San Francisco, CA', 'Warriors', 'NBA','Warriors','Nets');
 
 	
 INSERT INTO team_participation (event_id, team_name) VALUES
@@ -203,7 +212,16 @@ INSERT INTO team_participation (event_id, team_name) VALUES
 	(1000013, 'Braves'),
 	(1000013, 'Cubs'),
 	(1000014, 'Cubs'),
-	(1000014, 'Red Sox');
+	(1000014, 'Red Sox'),   
+	(1000015, 'Warriors'),
+	(1000015, 'Hawks'),
+	(1000016, 'Knicks'),
+	(1000016, 'Hawks'),
+	(1000017, 'Knicks'),
+	(1000017, 'Nets'),
+	(1000018, 'Warriors'),
+	(1000018, 'Nets');
+   
 
 INSERT INTO player_participation (player_id,event_id) VALUES		
 	(1, 1000001),
@@ -232,6 +250,11 @@ INSERT INTO league_membership (league_name, team_name) VALUES
 	('MLB', 'Dodgers'),
 	('MLB', 'Phillies'),
 	('MLB', 'Cubs'),
+	('NBA', 'Knicks'),
+	('NBA', 'Nets'),
+	('NBA', 'Warriors'),
+	('NBA', 'Hawks'),
+	('NBA', 'Mavericks'),
 	('MLB', 'Braves');
 
 
@@ -261,11 +284,65 @@ INSERT INTO betting_odds (bet_id,odds_team_1_wins,event_id, url) VALUES
 	(007,23,1000004, 'https://www.barstoolsportsbook.com/'),
 	(008,10,1000004, 'https://sportsbook.fanduel.com/'),
 	(009,5,1000005, 'https://sportsbook.fanduel.com/'),
-	(010,2,1000005, 'https://sportsbook.draftkings.com/sportsbook');
+	(010,2,1000005, 'https://sportsbook.draftkings.com/sportsbook'),
 
+	(011,18,1000006,'https://fivethirtyeight.com/'),
+	(012,13,1000007,'https://fivethirtyeight.com/'),
+	(013,88,1000008,'https://fivethirtyeight.com/'),
+	(014,60,1000009,'https://fivethirtyeight.com/'),
+	(015,66,1000010,'https://fivethirtyeight.com/'),
+	(016,33,1000011,'https://fivethirtyeight.com/'),
+	(017,2,1000012,'https://fivethirtyeight.com/'),
+	(018,99,1000013,'https://fivethirtyeight.com/'),
+	(019,85,1000014,'https://fivethirtyeight.com/'),
+	(020,45,1000015,'https://fivethirtyeight.com/'),
+	(021,22,1000016,'https://fivethirtyeight.com/'),
+	(022,90,1000017,'https://fivethirtyeight.com/'),
+	(023,50,1000018,'https://fivethirtyeight.com/'),
+    
+	(024,34,1000006,'https://sportsbook.draftkings.com/sportsbook'),
+	(025,66,1000007,'https://sportsbook.draftkings.com/sportsbook'),
+	(026,6,1000008,'https://sportsbook.draftkings.com/sportsbook'),
+	(027,22,1000009,'https://sportsbook.draftkings.com/sportsbook'),
+	(028,44,1000010,'https://sportsbook.draftkings.com/sportsbook'),
+	(029,88,1000011,'https://sportsbook.draftkings.com/sportsbook'),
+	(030,90,1000012,'https://sportsbook.draftkings.com/sportsbook'),
+	(031,39,1000013,'https://sportsbook.draftkings.com/sportsbook'),
+	(032,25,1000014,'https://sportsbook.draftkings.com/sportsbook'),
+	(033,75,1000015,'https://sportsbook.draftkings.com/sportsbook'),
+	(034,55,1000016,'https://sportsbook.draftkings.com/sportsbook'),
+	(035,77,1000017,'https://sportsbook.draftkings.com/sportsbook'),
+	(036,23,1000018,'https://sportsbook.draftkings.com/sportsbook'),
 
+    
+	(037,90,1000006,'https://sportsbook.fanduel.com/'),
+	(038,23,1000007,'https://sportsbook.fanduel.com/'),
+	(039,26,1000008,'https://sportsbook.fanduel.com/'),
+	(040,42,1000009,'https://sportsbook.fanduel.com/'),
+	(041,48,1000010,'https://sportsbook.fanduel.com/'),
+	(042,89,1000011,'https://sportsbook.fanduel.com/'),
+	(043,30,1000012,'https://sportsbook.fanduel.com/'),
+	(044,3,1000013,'https://sportsbook.fanduel.com/'),
+	(045,55,1000014,'https://sportsbook.fanduel.com/'),
+	(046,73,1000015,'https://sportsbook.fanduel.com/'),
+	(047,53,1000016,'https://sportsbook.fanduel.com/'),
+	(048,50,1000017,'https://sportsbook.fanduel.com/'),
+	(049,21,1000018,'https://sportsbook.fanduel.com/'),
 
-
+   
+	(050,7,1000006,'https://www.barstoolsportsbook.com/'),
+	(051,36,1000007,'https://www.barstoolsportsbook.com/'),
+	(052,66,1000008,'https://www.barstoolsportsbook.com/'),
+	(053,2,1000009,'https://www.barstoolsportsbook.com/'),
+	(054,14,1000010,'https://www.barstoolsportsbook.com/'),
+	(055,63,1000011,'https://www.barstoolsportsbook.com/'),
+	(056,50,1000012,'https://www.barstoolsportsbook.com/'),
+	(057,51,1000013,'https://www.barstoolsportsbook.com/'),
+	(058,44,1000014,'https://www.barstoolsportsbook.com/'),
+	(059,45,1000015,'https://www.barstoolsportsbook.com/'),
+	(060,49,1000016,'https://www.barstoolsportsbook.com/'),
+	(061,41,1000017,'https://www.barstoolsportsbook.com/'),
+	(062,69,1000018,'https://www.barstoolsportsbook.com/');
 
 
 
