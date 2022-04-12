@@ -29,6 +29,19 @@
     text-emphasis: bold;
 }
 
+.title1 {
+    font-size: 24pt;
+    color: #186B79;
+    margin: auto;
+    text-emphasis: bold;
+}
+
+.button {
+    padding: 1px 3px;
+    background-color: white;
+    color: black;
+}
+
 .info {
     font-size: 24pt;
     text-align: center;
@@ -53,6 +66,7 @@ table{
 th {
     border: 1px solid black;
     text-emphasis: bold;
+    font-size: 18pt;
 }
 
 td {

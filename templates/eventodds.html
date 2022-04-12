@@ -35,11 +35,11 @@
             <label for="Date">Date:</label>
             <input type="date" id="date" name="date">
             <input type="submit" value="Submit">
+            <element class="button"> <a href="/historicalaccuracy?data={{ids}}">Get Historical Accuracy</a></element>
         </form>
-        <br>
+        <br>    
         <table>
             <tr>
-                <th>Event ID</th>
                 <th>Name</th>
                 <th>Date</th>
             </tr>
@@ -50,6 +50,11 @@
             </tr>
             {% endfor %}
         </table>
-        <p><a href="/">Home page</a></p> 
+        <br>
+        <div class="menu">
+            <div class="title"> Quick Links </div>
+            <p><a href="/">Home</a></p>
+            <p><a href="/debugging">Debugging</a></p>
+        </div>
     </body>
 </html>
