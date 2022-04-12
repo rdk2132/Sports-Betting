@@ -190,6 +190,7 @@ class Backend:
         for i in range(len(url_list)):
             name = names[i]
             acc = self.get_historical_accuracy(event_ids,url_list[i])
+            acc = round(acc,3)
             if acc == 0:
                 continue
             results.append([name,acc])  
