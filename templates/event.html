@@ -1,9 +1,72 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="style.css" rel="stylesheet">
-    </head>    
+        <link href="{{ url_for('static', filename='style.css')}}" rel="stylesheet">
+    </head>  
     <body>
-        LEAGUE INFO
+        <div id="header">
+            <div class="title">
+              <h1>Sports Betting</h1>
+            </div>
+        </div>
+        <br>
+        <element class="title">Event Info</element>
+        <br>
+        <element class="welcomemessage">Event Name: {{info[0][1]}}</element>
+        <br>
+        <element class="welcomemessage">Date: {{info[0][2]}}</element>
+        <br>
+        <element class="welcomemessage">Sport: {{info[0][3]}}</element>
+        <br>
+        <element class="welcomemessage">Location: {{info[0][4]}}</element>
+        <br>
+        <element class="welcomemessage">Winner: {{info[0][5]}}</element>
+        <br>
+        <element class="welcomemessage">Team 1: <a href="/team?data={{info[0][6]}}">{{info[0][6]}}</a></element>
+        <br>
+        <element class="welcomemessage">Team 2: <a href="/team?data={{info[0][7]}}">{{info[0][7]}}</a></element>
+        <br>
+        <element class="welcomemessage">League: {{info[0][8]}}</element>
+        <br>
+        <div class="title">Oddsmakers for this event</div>
+        <table>
+        <tr>
+            <td>No.</td>
+            <td>{{info[0][6]}} Win Prob (%)</td>
+            <td>{{info[0][7]}} Win Prob (%)</td>
+            <td>URL</td>
+            <td>Company Name</td>
+            <td>Year Founded</td>
+            <td>Volume of bets</td>
+        </tr>
+        {% for n in odds %}
+            <tr>
+                <td>{{n[0]}}</td>
+                <td>{{n[1]}}</td>
+                <td>{{n[2]}}</td>
+                <td><a href="{{n[4]}}">{{n[4]}}</a></td>
+                <td>{{n[5]}}</td>
+                <td>{{n[6]}}</td>
+                <td>{{n[7]}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        <br>
+        <div class="title">Players Participating</div>
+        <table>
+        <tr>
+        {% for n in players %}
+            <td><a href="/player?data={{n}}">{{n}}</a></td>
+        {% endfor %}
+        </tr>
+        </table>
+        <br>
+        <br>
+        <div class="menu">
+            <div class="title"> Quick Links </div>
+            <p><a href="/">Home</a></p>
+            <p><a href="/debugging">Debugging</a></p>
+            <p><a href="/eventodds">Get Event Odds</a></p>
+        </div>
     </body>
 </html>
