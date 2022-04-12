@@ -178,8 +178,26 @@ class Backend:
             return 0
         return statistics.mean(errors)
         
-        
+    def get_historical_accuracy_all_urls(self,event_ids):
+        odds_makers = self.get_odds_makers()
+        url_list = []
+        names = []
+        for line in odds_makers:
+            url_list.append(line[1])
+            names.append(line[0])
+    
+        results = []
+        for i in range(len(url_list)):
+            name = names[i]
+            acc = self.get_historical_accuracy(event_ids,url_list[i])
+            if acc == 0:
+                continue
+            results.append([name,acc])  
+        return results
+    
 #b = Backend()
+#r = b.get_historical_accuracy_all_urls([1000001,1000002,1000003,1000004,1000005,1000006,1000007,1000008,1000009])
+#print(r)
 #r = b.get_historical_accuracy([1000001,1000002],'https://fivethirtyeight.com/')
 #print(r)
 #r = b.get_historical_accuracy([1000003,1000004],'https://fivethirtyeight.com/')
