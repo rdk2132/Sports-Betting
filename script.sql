@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS team(
    team_name  CHAR(50) PRIMARY KEY,
    location  CHAR(50) NOT NULL,
    current_season  CHAR(50),
-   record season_record,
+   s_record season_record,
    coach CHAR(50),
    blurb TEXT
 );
@@ -133,7 +133,7 @@ VALUES
     (9, 'Gleyber', 'Torres', 'Second Base', 23, 700000, 'M','2004-12-20', 'Gleyber David Torres Castro (born December 13, 1996) is a Venezuelan professional baseball shortstop and second baseman for the New York Yankees of Major League Baseball (MLB). He made his MLB debut on April 22, 2018'),
     (10, 'Brandon', 'Nimmo', 'Outfielder' ,28, 4100000, 'M','1996-07-07', 'Brandon Tate Nimmo (born March 27, 1993) is an American professional baseball outfielder for the New York Mets of Major League Baseball (MLB). He was drafted by the Mets in the first round of the 2011 Major League Baseball draft.');
 
-INSERT INTO team (team_name, location, current_season, record, coach,blurb) VALUES
+INSERT INTO team (team_name, location, current_season, s_record, coach,blurb) VALUES
 	('Yankees', 'New York City', '2022', '(5, 5)', 'Aaron Boone', 'The New York Yankees are an American professional baseball team based in the New York City borough of the Bronx. The Yankees compete in Major League Baseball (MLB) as a member club of the American League (AL) East division. They are one of two major league clubs based in New York City, the other being the National League''s (NL) New York Mets. The Yankees began play in the 1901 season as the Baltimore Orioles (no relation to the modern Baltimore Orioles). In 1903, Frank Farrell and Bill Devery purchased the franchise after it ceased operations and moved it to New York City, renaming the club the New York Highlanders.[5] The Highlanders were officially renamed the New York Yankees in 1913.'),
 	('Mets', 'New York City', '2022', '(7, 3)', 'Buck Showalter', 'The New York Mets are an American professional baseball team based in the New York City borough of Queens. The Mets compete in Major League Baseball (MLB) as a member of the National League (NL) East division. They are one of two major league clubs based in New York City, the other being the American League''s (AL) New York Yankees. One of baseball''s first expansion teams, the Mets were founded in 1962 to replace New York''s departed NL teams, the Brooklyn Dodgers and the New York Giants. The team''s colors evoke the blue of the Dodgers and the orange of the Giants.'),
 	('Angels', 'Los Angelos', '2022', '(6, 4)', 'Joe Madden', 'The Los Angeles Angels are an American professional baseball team based in the Los Angeles metropolitan area. The Angels compete in Major League Baseball (MLB) as a member club of the American League (AL) West division. The Angels are the first MLB team to originate from the state of California; the Athletics were originally from Philadelphia (and moved to the state from Kansas City), and the Dodgers and Giants are originally from two New York City boroughs—Brooklyn and Manhattan, respectively. Since 1966, the team has played its home games at Angel Stadium in Anaheim.'),
